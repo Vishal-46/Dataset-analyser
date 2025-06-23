@@ -8,7 +8,7 @@ from sklearn.decomposition import PCA
 import matplotlib.pyplot as plt
 
 def ml_section(df):
-    st.subheader("🤖 Machine Learning Module")
+    
 
     task = st.selectbox("Choose Task", ["Classification", "Clustering"])
 
