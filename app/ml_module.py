@@ -48,7 +48,7 @@ def ml_section(df):
             model = KMeans(n_clusters=num_clusters, random_state=42)
             cluster_labels = model.fit_predict(data)
 
-            st.write("✅ Clustering Result:")
+            st.write(" Clustering Result:")
             df_with_clusters = data.copy()
             df_with_clusters['Cluster'] = cluster_labels
             st.dataframe(df_with_clusters.head())
