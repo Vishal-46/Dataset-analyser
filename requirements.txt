@@ -1,8 +1,8 @@
-streamlit
 pandas
-numpy
-seaborn
 matplotlib
-transformers
-torch
 scikit-learn
+xlsxwriter
+fpdf
+plotly
+prophet
+streamlit
