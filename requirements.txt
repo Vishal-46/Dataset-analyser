@@ -6,3 +6,4 @@ fpdf
 plotly
 prophet
 streamlit
+seaborn
