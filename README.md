@@ -4,29 +4,29 @@ An intelligent, interactive web app that analyzes any dataset (CSV, Excel, or JS
 
 ---
 
-## 🚀 Features
+##  Features
 
-- 📁 **Upload any dataset** and preview the top records
-- ✅ **Data quality checker** (missing values, null ratios, column types)
-- 🧠 **NLP-generated summary** of the dataset (smart insights)
-- 📊 **Auto EDA report** (value counts, distributions, stats)
-- 🤖 **ML Suggestor & Trainer**  
+-  **Upload any dataset** and preview the top records
+-  **Data quality checker** (missing values, null ratios, column types)
+-  **NLP-generated summary** of the dataset (smart insights)
+-  **Auto EDA report** (value counts, distributions, stats)
+-  **ML Suggestor & Trainer**  
   - Automatic model suggestion based on dataset
   - Classification / Regression / Clustering using scikit-learn
   - Model score + visual results
 
 ---
 
-## 🛠 Built With
+##  Built With
 
-- `Python` 🐍
-- `Streamlit` ⚡️
+- `Python` 
+- `Streamlit` 
 - `Pandas`, `Seaborn`, `Plotly`, `Scikit-learn`
 - `Open-source NLP models` for summarizing insights
 
 ---
 
-## 🎓 Ideal For
+##  Ideal For
 
 - Data Engineers / Analysts looking for quick dataset insights  
 - Students exploring ML + data pipeline integration  
@@ -34,6 +34,6 @@ An intelligent, interactive web app that analyzes any dataset (CSV, Excel, or JS
 
 ---
 
-> 📌 Made with ❤️ and Streamlit — feel free to fork, star, or suggest features!
+>  Made with ❤️ and Streamlit — feel free to fork, star, or suggest features!
 
 # Access The App here -> [DataSet Summarizer](https://dataset-summarizer.streamlit.app/)
