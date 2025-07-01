@@ -1,4 +1,4 @@
-def generate_insights(df, report):
+def generate_insights(df, report): 
     insights = []
     insights.append(f"The dataset has {report['num_rows']} rows and {report['num_columns']} columns.")
     

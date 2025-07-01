@@ -9,7 +9,6 @@ from insight_generator import generate_insights
 from eda_module import eda_section
 from ml_module import ml_section
 
-# Optional: Prophet for Forecasting (only if needed)
 try:
     from prophet import Prophet
     PROPHET_AVAILABLE = True
@@ -31,7 +30,6 @@ st.markdown("""
 uploaded_file = st.file_uploader("📁 Upload CSV, Excel, or JSON", type=["csv", "xlsx", "xls", "json"])
 
 if uploaded_file:
-    # Read file
     if uploaded_file.name.endswith('.csv'):
         df = pd.read_csv(uploaded_file, na_values=["", " ", "NA", "NaN", "null", "NULL"])
     elif uploaded_file.name.endswith(('.xlsx', '.xls')):
@@ -41,24 +39,15 @@ if uploaded_file:
     else:
         st.error("Unsupported file format.")
         st.stop()
-
-    # --- Enhanced Clean Data ---
-    # Normalize column names
     df.columns = df.columns.str.strip().str.lower().str.replace(" ", "_")
-    # Strip whitespace in string values
     df = df.applymap(lambda x: x.strip() if isinstance(x, str) else x)
-    # Drop duplicate rows
     df = df.drop_duplicates()
-    # Convert columns to numeric or datetime where possible
     for col in df.columns:
-        # Try datetime conversion for columns with date-like strings
         if df[col].dtype == 'object':
             try:
                 df[col] = pd.to_datetime(df[col], errors='raise')
             except:
-                # If datetime fails, try numeric conversion
                 df[col] = pd.to_numeric(df[col], errors='ignore')
-    # Fill missing numeric values with mean
     numeric_cols = df.select_dtypes(include=['number']).columns
     df[numeric_cols] = df[numeric_cols].fillna(df[numeric_cols].mean())
 
@@ -68,7 +57,7 @@ if uploaded_file:
     # Tabs
     tab1, tab2, tab3 = st.tabs(["📊 Data Quality", "📈 EDA", "🤖 Machine Learning"])
 
-    # Tab 1: Quality
+    # Quality
     with tab1:
         st.title("📊 Data Quality & Insight Generator")
 
@@ -103,12 +92,12 @@ if uploaded_file:
         for line in insights:
             st.markdown(f"• {line}")
 
-    # Tab 2: EDA
+    # EDA
     with tab2:
         st.title("📈 Exploratory Data Analysis")
         eda_summary = eda_section(df)
 
-    # Tab 3: ML
+    # ML
     with tab3:
         st.title("🤖 Machine Learning")
         model_results = {}
@@ -124,21 +113,8 @@ if uploaded_file:
         except Exception as e:
             st.error(f"ML processing failed: {e}")
 
-    # Optional: Prophet Forecast
-    if PROPHET_AVAILABLE and 'ds' in df.columns and 'y' in df.columns:
-        st.subheader("📈 Time Series Forecast (Prophet)")
-        try:
-            df_prophet = df[['ds', 'y']].dropna()
-            model = Prophet()
-            model.fit(df_prophet)
-            future = model.make_future_dataframe(periods=30)
-            forecast = model.predict(future)
-            fig = model.plot(forecast)
-            st.pyplot(fig)
-        except Exception as e:
-            st.warning(f"Forecasting skipped: {e}")
+    
 
-    # --- XLSX Export of Cleaned Data ---
     buffer = io.BytesIO()
     with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
         df.to_excel(writer, index=False, sheet_name="CleanedData")
