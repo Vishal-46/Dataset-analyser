@@ -1,4 +1,4 @@
-# 📊 Dataset Analyzer & Quality Insight Tool
+#  Dataset Analyzer & Quality Insight Tool
 
 An intelligent, interactive web app that analyzes any dataset (CSV, Excel, or JSON) and gives you clean insights — powered by data engineering + machine learning!
 
@@ -33,7 +33,4 @@ An intelligent, interactive web app that analyzes any dataset (CSV, Excel, or JS
 - Resume projects to showcase smart automation  
 
 ---
-
->  Made with ❤️ and Streamlit — feel free to fork, star, or suggest features!
-
 # Access The App here -> [DataSet Summarizer](https://dataset-summarizer.streamlit.app/)
