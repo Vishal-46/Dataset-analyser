@@ -1,4 +1,6 @@
-import streamlit as stimport seaborn as sns
+# eda_module.py
+import streamlit as st
+import seaborn as sns
 import matplotlib.pyplot as plt
 import plotly.express as px
 import pandas as pd
