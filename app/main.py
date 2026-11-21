@@ -40,7 +40,7 @@ if uploaded_file:
         st.error("Unsupported file format.")
         st.stop()
     df.columns = df.columns.str.strip().str.lower().str.replace(" ", "_")
-    df = df.applymap(lambda x: x.strip() if isinstance(x, str) else x)
+    df = df.map(lambda x: x.strip() if isinstance(x, str) else x)
     df = df.drop_duplicates()
     for col in df.columns:
         if df[col].dtype == 'object':
